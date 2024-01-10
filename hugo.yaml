@@ -156,7 +156,7 @@ params:
       
       I am a robotics software & mechanical engineer with a passion for robotics development. My undergraduate background encompasses both mechanical engineering and computer science. I hold a strong interest in the field of assistive and mobile robots. Currently, I am pursuing a Master's degree in Robotics at [Northwestern University](https://www.mccormick.northwestern.edu/robotics/) in Evanston, Illinois.
 
-      I am currently working on a robotics project that involves an assistive robot designed to reduce nurse's work by helping hydrate a parent's mouth without colliding with other medical devices (e.g., tubes) on the patient's face.
+      I am currently working on a robotics project that involves an assistive robot designed to reduce nurse's work by helping hydrate a patient's mouth without colliding with other medical devices (e.g., tubes) on the patient's face.
     skills:
       enable: true
       title: "Here are a few technologies I've been working with recently:"

@@ -65,7 +65,7 @@ V_total = sym.simplify(sym.Matrix([V_f + V_wa + V_wb + V_wc + V_wd]))
 ```
 2. Define symtem variables as `q = [x_f,  y_f, theta_f, x_j,  y_j,  theta_j]` and use `Lagrangian Equation` and `q` to calculate `Euler Lagrangian equation`.<br />
 
-$$\frac{\partial L}{\partial \dot{q}} \bigg |^{\tau +}_{\tau -} = \lambda \frac{\partial \phi}{\partial q^{'}}$$
+<!-- $$\frac{\partial L}{\partial \dot{q}} \bigg |^{\tau +}_{\tau -} = \lambda \frac{\partial \phi}{\partial q^{'}}$$ -->
 
 
 **Add the Constraints to the system**
@@ -85,4 +85,4 @@ Note, the `jack_torque = 0` since they are point mass.<br />
 
 Impact update function can be found at cell 13 of 19 where it takes `a current state variable` and an index of `phi, constraint`. Then it will utilize the following function to do the impact update.
 
-$$\bigg [ \frac{\partial L}{\partial \dot{q}} \cdot \dot{q} - L(q, \dot{q}) \bigg] ^{\tau +}_{\tau -} = 0.$$
+<!-- $$\bigg [ \frac{\partial L}{\partial \dot{q}} \cdot \dot{q} - L(q, \dot{q}) \bigg] ^{\tau +}_{\tau -} = 0.$$ -->
