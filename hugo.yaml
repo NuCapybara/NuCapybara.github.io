@@ -142,16 +142,16 @@ params:
         - icon: fab fa-github
           url: https://github.com/NuCapybara
         - icon: fab fa-linkedin
-          url: https://example.com
-      customIcons:
-        - icon: /fav.png
-          url: /posts/my-first-post/
+          url: https://www.linkedin.com/in/jialu-yu/
+      # customIcons:
+      #   - icon: /fav.png
+      #     url: /posts/my-first-post/
 
   # About
   about:
     enable: true
     title: "About Me"
-    image: "/images/me.png"
+    image: "/images/stella_profile.jpg"
     content: |-
       
       I am a robotics software & mechanical engineer with a passion for robotics development. My undergraduate background encompasses both mechanical engineering and computer science. I hold a strong interest in the field of assistive and mobile robots. Currently, I am pursuing a Master's degree in Robotics at [Northwestern University](https://www.mccormick.northwestern.edu/robotics/) in Evanston, Illinois.
