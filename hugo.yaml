@@ -315,17 +315,19 @@ params:
             url: https://github.com/ME495-EmbeddedSystems/final-project-group2
 
       - title: Simulating the Dynamics from Scratch-Mechanical Modeling of a Jack Bouncing within the Box Boundaries."
-        content: A web app to convert image to pdf, png to jpg, png to jpg and png to webp without database using django.
+        content: The simulation from scratch involves with Python and control theories, including Euler-Lagrangian equations and impact laws.
         image: /images/Simulation.gif
         featured:
           name: Read More
           link: /posts/my-second-post/
         badges:
-          - "Django"
-          - "Bootstrap"
+          - "Python"
+          - "Control"
+          - "Euler-Lagrangian Equation"
+          - "Impact Law"
         links:
           - icon: fab fa-github
-            url: https://github.com/gurusabarish/converter
+            url: https://github.com/NuCapybara/BouncingJack/tree/main
 
       # - title: Hugo Profile V2
       #   content: A clean and simple Hugo template for personal portfolio and blog.
