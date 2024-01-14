@@ -127,14 +127,14 @@ params:
     title: "Stella Yu."
     subtitle: "A passionate Robotics Software & Mechanical Engineer."
     content: "I leverage my coding, design, and analysis skills to construct robots that liberate people's hands."
-    image: /images/hero.svg
+    image: /images/Nao.png
     bottomImage:
       enable: false
     # roundImage: true # Make hero image circular | default false
     button:
       enable: true
       name: "Resume"
-      url: "#"
+      url: "/docs/Jialu_Yu__Engineer_Internship.pdf"
       download: true
       newPage: false
     socialLinks:
@@ -266,9 +266,7 @@ params:
       #   GPA: "4.2 out of 5.0"
       #   featuredLink:
       #     enable: true
-      #     url: "https://example.com"
-
-  # # Achievements
+      #     url: "https://example.com"CR_2024_Mechanical_
   # achievements:
   #   enable: true
   #   # title: "Custom Name"
@@ -314,7 +312,7 @@ params:
           - icon: fab fa-github
             url: https://github.com/ME495-EmbeddedSystems/final-project-group2
 
-      - title: Simulating the Dynamics from Scratch-Mechanical Modeling of a Jack Bouncing within the Box Boundaries."
+      - title: Simulating the Dynamics from Scratch-Mechanical Modeling of a Jack Bouncing within the Box Boundaries.
         content: The simulation from scratch involves with Python and control theories, including Euler-Lagrangian equations and impact laws.
         image: /images/Simulation.gif
         featured:
@@ -328,6 +326,23 @@ params:
         links:
           - icon: fab fa-github
             url: https://github.com/NuCapybara/BouncingJack/tree/main
+
+
+      - title: Drone Tagging - Release Mechanism Design
+        content: Designed a new release mechanism that will make the tag more robust to perturbations and external factors, resulting in an increase to the deployment success rate of the biologging tags.
+        image: /images/Drone_Tagging.gif
+        featured:
+          name: Read More
+          link: /posts/my-second-post/
+        badges:
+          - "Solidworks"
+          - "Fluid dynamics"
+          - "Engineering Analysis and validation"          
+          - "Design"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/NuCapybara/BouncingJack/tree/main
+
 
       # - title: Hugo Profile V2
       #   content: A clean and simple Hugo template for personal portfolio and blog.
