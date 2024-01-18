@@ -29,7 +29,7 @@ The project requirements and specifications were formulated through discussions 
 ![targets](/images/release_design.png)
 ![targets](/images/DTAG.jpg)
 
-The Figure above shows the CAD assembly of the release mechanism design and how it being installed onto the fin, clamp and the tag.
+The Figure above shows the CAD assembly of the release mechanism design and how it is installed onto the fin, clamp and the tag.
 
 The release mechanism is made up of four 3D printed components. The servo mount and spring mount connect to the drone, while the fin topper and fin topper disk connect to the top of the fins. The servo motor, mounted in the servo mount, drives a linkage which is used to pull the servo pin. When the pin is pulled, a spring mounted into the spring mount is uncompressed, which forces the tag assembly downwards. The tag assembly consists of the fin topper, fin topper disk, fin, clamp, and tag. The clamp and tag used in the testing are unmodified parts which were provided to us by the research team.
 
@@ -59,11 +59,34 @@ All components engineered are visually represented in the graph below.
 
 **Part I: Orientation Angle**
 
-The orientation of the tag while falling through the air must remain less than 25° to meet our specification. We will verify this by using the mechanism to drop the tag from a test rig which is modeled in the figure below.
-
 ![targets](/images/rig1.png)
 ![targets](/images/rig2.jpg)
 
+The orientation of the tag while falling through the air must remain less than 25° to meet our specification. We will verify this by using the mechanism to drop the tag from a test rig which is modeled in the figure below.
+
+
+
  We will record these drop tests and use the software Tracker to measure the maximum orientation angle of each drop. A screenshot of the Tracker software can be seen in Figure 32 below. The orientation angle over time is plotted in the top right corner of Figure 32. We can verify whether the orientation angle is less than 25° for each drop by looking at this plot.
- 
+
+**Part II: Impact Force**
+
+The impulsive impact force must be between 5 and 26.6 Ns in order to meet our specifications. We will verify this in a similar way as we verified the orientation angle, by using the Tracker software on a video recording of a physical test drop. The Tracker software in this case will measure the velocity of the tag during the descent. A screenshot of the Tracker software measuring velocity can be seen in figure below. We can plug the final velocity at impact into equation to determine the impulsive impact force based on this final velocity. From here we can verify whether the impulsive impact force of each drop test meets our specification of being in between 5 and 26.6 Ns.
+
  ![targets](/images/test_1.png)
+
+
+## Summary
+
+**Fin Chosen**
+
+ ![targets](/images/test3.gif)
+![targets](/images/test4.gif)
+
+
+The experiment results reveal that Fin 2, featuring the small fin, achieves the necessary impact forces at 12.4 N while keeping the tag orientation deviation within a favorable range of 3.2-10 degrees. This outcome underscores the effectiveness of our design in ensuring both adequate impact forces and minimal deviation in tag orientation. To visually showcase the performance of Fin 2, we have provided a GIF illustrating the test results for this specific fin design.
+
+**Release Mechanism with Fin 2**
+
+The accompanying image displays the final product, showcasing the release mechanism installed with the servo motor and Fin 2, reflecting the successful culmination of our efforts in creating a reliable and impactful drone tagging system.
+
+![targets](/images/tag_whole.jpg)

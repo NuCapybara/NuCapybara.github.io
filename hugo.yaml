@@ -179,7 +179,7 @@ params:
         companyUrl: "https://neurro-lab.engin.umich.edu/"
         date: "Jul 2022 - Mar 2023"
         featuredLink:
-          enable: true
+          enable: false
           name: "View the project"
           url: "https://example.com"
         content: |
@@ -195,7 +195,7 @@ params:
         companyUrl: "https://cfe.umich.edu/perot-jain-techlab-at-mcity/"
         date: "Sep 2020 - Dec 2021"
         featuredLink:
-          enable: true
+          enable: false
           name: "View the project"
           url: "https://example.com"
         content: |
