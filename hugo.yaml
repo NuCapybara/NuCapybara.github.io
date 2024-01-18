@@ -333,7 +333,7 @@ params:
         image: /images/Drone_Tagging.gif
         featured:
           name: Read More
-          link: /posts/my-second-post/
+          link: /posts/my-third-post/
         badges:
           - "Solidworks"
           - "Fluid dynamics"
