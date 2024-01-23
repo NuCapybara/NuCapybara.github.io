@@ -207,7 +207,7 @@ params:
 
       - job: "OPDP Operations Intern"
         company: "Abbott Laboratories"
-        companyUrl: "https://example.com"
+        companyUrl: "https://www.abbott.com/"
         date: "Jun 2021 - Aug 2021"
         info:
           enable: false
