@@ -151,7 +151,7 @@ params:
   about:
     enable: true
     title: "About Me"
-    image: "/images/stella_profile.jpg"
+    image: "/images/stella_profile1.jpg"
     content: |-
       
       I am a robotics software & mechanical engineer with a passion for robotics development. My undergraduate background encompasses both mechanical engineering and computer science. I hold a strong interest in the field of assistive and mobile robots. Currently, I am pursuing a Master's degree in Robotics at [Northwestern University](https://www.mccormick.northwestern.edu/robotics/) in Evanston, Illinois.
@@ -339,9 +339,7 @@ params:
           - "Fluid dynamics"
           - "Engineering Analysis and validation"          
           - "Design"
-        links:
-          - icon: fab fa-github
-            url: https://github.com/NuCapybara/BouncingJack/tree/main
+
 
 
       # - title: Hugo Profile V2
@@ -362,9 +360,9 @@ params:
   contact:
     enable: true
     # title: "Custom Name"
-    content: If you have any questions or opportunities or just want to say hi, please feel free to contact me using the information below!
+    content: If you have any questions or opportunities or just want to say hi, please feel free to contact me by Email jialuyu2024@u.northwestern.edu or Tel 734-968-9456.
     email: jialuyu2024@u.northwestern.edu
-    btnName: Email Jialu
+    btnName: Email Stella
     # formspree:
     #   enable: true # `contact.email` value will be ignored
     #   formId: abcdefgh # Take it from your form's endpoint, like 'https://formspree.io/f/abcdefgh'
@@ -379,11 +377,9 @@ params:
       enable: true
       disableFeaturedImage: false
     socialNetworks:
-      github: https://github.com
-      linkedin: https://linkedin.com
-      twitter: https://twitter.com
-      instagram: https://instagram.com
-      facebook: https://facebook.com
+      github: https://github.com/NuCapybara
+      linkedin: linkedin.com/in/jialu-yu
+
 
   # List pages like blogs and posts
   listPages:
