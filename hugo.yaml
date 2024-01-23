@@ -1,6 +1,6 @@
 baseURL: "https://hugo-profile.netlify.app"
 languageCode: "en-us"
-title: "Hugo Profile"
+title: "Stella's portfolio"
 theme: hugo-profile
 
 outputs:
@@ -310,7 +310,7 @@ params:
           - icon: fa fa-envelope
             url: mailto:?subject=Check%20out%20this%20project!&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
           - icon: fab fa-github
-            url: https://github.com/ME495-EmbeddedSystems/final-project-group2
+            url: https://github.com/NuCapybara/robot_go_bowling
 
       - title: Simulating the Dynamics from Scratch-Mechanical Modeling of a Jack Bouncing within the Box Boundaries.
         content: The simulation from scratch involves with Python and control theories, including Euler-Lagrangian equations and impact laws.
