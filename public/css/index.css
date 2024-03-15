@@ -71,7 +71,7 @@ header .navbar.animate {
 /* hero */
 
 #hero {
-    /* min-height: 100vh; */
+    min-height: 100vh;
     line-height: 2rem;
     max-width: 100%;
 }
@@ -246,20 +246,27 @@ header .navbar.animate {
     color: var(--primary-color) !important;
 }
 
-#about a::after {
-    content: "";
-    display: block;
-    width: 0px;
-    height: 2px;
-    bottom: 0.37em;
-    background-color: var(--primary-color);
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-    opacity: 0.5;
+
+
+#about a.btn {
+    margin-top: 50px;
+    padding: 0.7rem 1.75rem;
+    border: 1px solid var(--primary-color);
+    color: var(--text-color) !important;
+    border-radius: .75rem;
+    transition: none;
 }
 
-#about a:hover::after, #about a:focus::after, #about a:active::after {
-    width: 100%;
+#about a.btn:focus {
+    box-shadow: none;
 }
+
+#about a.btn:hover {
+    background-color: var(--secondary-color) !important;
+    color: var(--text-color) !important;
+    opacity: 0.9;
+}
+
 
 /* experience */
 

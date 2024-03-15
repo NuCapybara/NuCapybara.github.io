@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Stella&#39;s portfolio</title>
+    <link>https://hugo-profile.netlify.app/posts/</link>
+    <description>Recent content in Posts on Stella&#39;s portfolio</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jan 2024 11:35:08 -0600</lastBuildDate>
+    <atom:link href="https://hugo-profile.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Drone Tagging</title>
+      <link>https://hugo-profile.netlify.app/posts/my-third-post/</link>
+      <pubDate>Thu, 18 Jan 2024 11:35:08 -0600</pubDate>
+      <guid>https://hugo-profile.netlify.app/posts/my-third-post/</guid>
+      <description>Authors: Ethan Parham, Jialu Yu, David Morris, Henry Meiselman Introduction Tagging whales enables us to characterize their health and lifestyle, allowing us as a species to adjust our actions and minimize our impact on these animals. Drone tagging proves superior to traditional boat tagging methods, as it reduces the time and costs associated with data collection and enables the tagging of smaller, more agile animals.&#xA;One of the main challenges is the tags missing the whales; currently, the drone needs to be around 16 to 20 feet in the air to ensure the tag has the correct orientation to stick, negatively impacting drop accuracy.</description>
+    </item>
+    <item>
+      <title>Simulating the Dynamics from Scratch-Modeling of a Jack Bouncing within the Box Boundaries.</title>
+      <link>https://hugo-profile.netlify.app/posts/my-second-post/</link>
+      <pubDate>Tue, 09 Jan 2024 14:39:44 -0600</pubDate>
+      <guid>https://hugo-profile.netlify.app/posts/my-second-post/</guid>
+      <description>Author: Jialu Yu Introduction The focal point of this project is the modeling of the mechanical system of a jack bouncing around in the boundary of a box. Overall System and Reference Frames Attached is a detailed drawing of the system, illustrating all the frames in use, complete with frame labels. These frames and their labels have been consistently used and identified in the code to maintain clarity and coherence.</description>
+    </item>
+    <item>
+      <title>Franka Robot: Precision Pin-hunting Meets Playfulness</title>
+      <link>https://hugo-profile.netlify.app/posts/my-first-post/</link>
+      <pubDate>Mon, 18 Dec 2023 05:18:56 -0600</pubDate>
+      <guid>https://hugo-profile.netlify.app/posts/my-first-post/</guid>
+      <description>Authors: Joel Goh, Maximiliano Palay, Rahul Roy, Sophia Schiffer, Jialu Yu Introduction In this project, the Franka arm searches for known randomly placed pins and shoots them down. The Franka arm is fitted with an onboard camera to search its environment and two Nerf blasters to be able to shoot the targets. There are two rounds of shooting, while during each rounds, the user can verbally specify colors of the pins that the arm is going to shoot and the Franka arm will pick up one gun to shoot all the designate colored pins at the environment.</description>
+    </item>
+  </channel>
+</rss>
