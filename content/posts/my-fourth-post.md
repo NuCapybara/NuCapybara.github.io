@@ -18,6 +18,8 @@ The project's goal is to enable a robot to detect lip landmarks and accurately a
 
 The image below shows the different nodes in the system and how they communicate with each other. Each node's funtionalities will be explained below.
 
+The project is mainly divided into two parts.
+
 ## Computer Vision
 
 The computer vision component of the application harnesses the power of the dlib library, renowned for its deep learning to perform facial landmark detection by the shape predictor model, trained on an extensive dataset of facial landmarks. This model is adept at pinpointing the precise locations of significant points on the face, ensuring high accuracy in facial feature recognition.
