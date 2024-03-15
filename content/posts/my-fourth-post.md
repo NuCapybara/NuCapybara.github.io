@@ -1,7 +1,7 @@
 +++
 title = 'Robot doing Mouth Care for Unconscious Residents'
 date = 2024-03-15T16:03:35-05:00
-draft = true
+draft = false
 +++
 
 ## Introduction
