@@ -1,0 +1,422 @@
+baseURL: "https://hugo-profile.netlify.app"
+languageCode: "en-us"
+title: "Stella's portfolio"
+theme: hugo-profile
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "JSON"
+  page:
+    - "HTML"
+    - "RSS"
+
+Paginate: 3
+enableRobotsTXT: true
+# disqusShortname: your-disqus-shortname
+# googleAnalytics: G-MEASUREMENT_ID
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+Menus:
+  main:
+    - identifier: blog
+      name: Blog
+      title: Blog posts
+      url: /blogs
+      weight: 1
+    - identifier: gallery
+      name: Gallery
+      title: Blog posts
+      url: /gallery
+      weight: 2
+  # Dropdown menu:
+  #   - identifier: dropdown
+  #     title: Example dropdown menu
+  #     name: Dropdown
+  #     weight: 3
+  #   - identifier: dropdown1
+  #     title: example dropdown 1
+  #     name: example 1
+  #     url: /#
+  #     parent: dropdown
+  #     weight: 1
+  #   - identifier: dropdown2
+  #     title: example dropdown 2
+  #     name: example 2
+  #     url: /#
+  #     parent: dropdown
+  #     weight: 2
+
+params:
+  title: "Hugo Profile"
+  description: Text about my cool site
+  # staticPath: ""  # The path to serve the static files from
+  favicon: "/fav.png"
+
+  # Whether to serve bootstrap css and js files from CDN or not. Can be set to true, "css" or "js" to choose between
+  # serving both, only the css, or only the js files through the CDN. Any other value will make so that CDN is not used.
+  # Note the lack of "" in true, it should be of boolean type.
+  useBootstrapCDN: false
+
+  # If you want to load dynamically responsive images from Cloudinary
+  # This requires your images to be uploaded + hosted on Cloudinary
+  # Uncomment and change YOUR_CLOUD_NAME to the Cloud Name in your Cloudinary console
+  # cloudinary_cloud_name: "YOUR_CLOUD_NAME"
+  
+  # Whether to add mathjax support on all pages. Alternatively, you can opt-in per page by adding `mathjax: true` in the frontmatter.
+  mathjax: false
+
+  # Whether the fade animations on the home page will be enabled
+  animate: true
+
+  theme:
+    # disableThemeToggle: true
+    # defaultTheme: "light" # dark
+
+  font:
+    fontSize: 1rem # default: 1rem
+    fontWeight: 400 # default: 400
+    lineHeight: 1.5 # default: 1.5
+    textAlign: left # default: left
+
+  # color preference
+  # color:
+  #   textColor:
+  #   secondaryTextColor:
+  #   backgroundColor:
+  #   secondaryBackgroundColor:
+  #   primaryColor:
+  #   secondaryColor:
+
+  #   darkmode:
+  #     textColor:
+  #     secondaryTextColor:
+  #     backgroundColor:
+  #     secondaryBackgroundColor:
+  #     primaryColor:
+  #     secondaryColor:
+
+  # If you want to customize the menu, you can change it here
+  navbar:
+    align: ms-auto # Left: ms-auto | center: mx-auto | right: me-auto | Default: ms-auto
+    # brandLogo: "/logo.png" # Logo for the brand | default is the favicon variable
+    # showBrandLogo: false # Show brand logo in nav bar | default is true
+    brandName: "Stella's portfolio" # Brand name for the brand | default is the title variable
+    disableSearch: false
+    # searchPlaceholder: "Search"
+    stickyNavBar:
+      enable : true
+      showOnScrollUp : true
+    menus:
+      disableAbout: false
+      disableExperience: false
+      disableEducation: false
+      disableProjects: false
+      disableAchievements: false
+      disableContact: false
+
+  # Hero
+  hero:
+    enable: true
+    intro: "Hi, my name is"
+    title: "Stella Yu."
+    subtitle: "A passionate Robotics Software & Mechanical Engineer."
+    content: "I leverage my coding, design, and analysis skills to construct robots that liberate people's hands."
+    image: /images/Nao.png
+    bottomImage:
+      enable: false
+    # roundImage: true # Make hero image circular | default false
+    button:
+      enable: true
+      name: "Resume"
+      url: "/docs/Jialu_Yu__Engineer_Internship.pdf"
+      download: true
+      newPage: false
+    socialLinks:
+      fontAwesomeIcons:
+        - icon: fab fa-github
+          url: https://github.com/NuCapybara
+        - icon: fab fa-linkedin
+          url: https://www.linkedin.com/in/jialu-yu/
+      # customIcons:
+      #   - icon: /fav.png
+      #     url: /posts/my-first-post/
+
+  # About
+  about:
+    enable: true
+    title: "About Me"
+    image: "/images/stella_profile1.jpg"
+    content: |-
+      
+      I am a robotics software & mechanical engineer with a passion for robotics development. My undergraduate background encompasses both mechanical engineering and computer science. I hold a strong interest in the field of assistive and mobile robots. Currently, I am pursuing a Master's degree in Robotics at [Northwestern University](https://www.mccormick.northwestern.edu/robotics/) in Evanston, Illinois.
+
+      I am currently working on a robotics project that involves an assistive robot designed to reduce nurse's work by helping hydrate a patient's mouth without colliding with other medical devices (e.g., tubes) on the patient's face.
+    skills:
+      enable: true
+      title: "Here are a few technologies I've been working with recently:"
+      items:
+        - "ROS2"
+        - "Python"
+        - "Solidworks" 
+        - "C++"
+        - "Computer Vision"
+        - "SLAM (Simultaneous localization and mapping)"
+        
+
+  # Experience
+  experience:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - job: "Student Researcher"
+        company: "NeuRRo Lab at University of Michigan"
+        companyUrl: "https://neurro-lab.engin.umich.edu/"
+        date: "Jul 2022 - Mar 2023"
+        featuredLink:
+          enable: false
+          name: "View the project"
+          url: "https://example.com"
+        content: |
+          I was working as a student researcher on the [Semi-Passive Rehabilitation robot](https://neurro-lab.engin.umich.edu/research/current-projects) 
+          tackling upper extremity rehabilitation.
+        
+          - Integrating a game handle with rotary encoder into the robots.
+          - CAD design on Hand Motion Coupling System under collaboration settings.
+          - Engineering a medical recliner for patients using the robot.
+
+      - job: "Student Software Developer"
+        company: "TechLab at MCity"
+        companyUrl: "https://cfe.umich.edu/perot-jain-techlab-at-mcity/"
+        date: "Sep 2020 - Dec 2021"
+        featuredLink:
+          enable: false
+          name: "View the project"
+          url: "https://example.com"
+        content: |
+          
+          Developed a traffic light classification system to enhance semi-autonomous vehicle obstacle detection in challenging lighting and weather conditions, while actively collaborating within a team setting.
+
+          - Gathered a dataset of 10K+ images of traffic lights using RGB and IR sensors
+          - Built a custom model to detect and label the streetlights automatically.
+
+      - job: "OPDP Operations Intern"
+        company: "Abbott Laboratories"
+        companyUrl: "https://www.abbott.com/"
+        date: "Jun 2021 - Aug 2021"
+        info:
+          enable: false
+        featuredLink:
+          enable: true
+          name: "View the project"
+          url: "https://example.com"
+        content: |
+          As an intern, I was responsible for the validation process of the largest Abbott factory, specifically concentrating on the manufacturing process for the Covid Testing kit.
+
+          - Brought the largest Abbott factory’s calibration processes into compliance with new QSB-R00 requirements.
+          - Implemented $20,000 yearly cost savings by designing a new instruments calibration system.
+          - Conducted heat study on in-transit products.
+
+
+  # Education
+  education:
+    enable: true
+    # title: "Custom Name"
+    index: false
+    items:
+      - title: "Master of Robotics"
+        school:
+          name: "Northwestern University"
+          url: "https://example.org"
+        date: "2023 - 2024"
+        GPA: "3.75 out of 4.0"
+        content: |-
+          Course taken:
+            - Robotics Manipulation 
+            - Embeded systems in Robotics
+            - Theory of Machines: Dynamics
+            - Introduction to AI
+      - title: "Bachelor of Science in Mechanical Engineering"
+        school:
+          name: "University of Michigan"
+          url: "https://example.org"
+        date: "2020-2023"
+        GPA: "3.3 out of 4.0"
+        content: |-
+          I co-authored two papers in the Nature Communications and Nature Electronics:
+          - [A stretchable epidermal sweat sensing platform with an integrated printed battery and electrochromic display](https://www.nature.com/articles/s41928-022-00843-6)
+          - [A self-sustainable wearable multi-modular E-textile bioenergy microgrid system](https://www.nature.com/articles/s41467-021-21701-7)
+
+          Honors:
+            - Cum Laude
+            - University Honors
+            - Dean's List
+      #     enable: true
+      #     name: "My academic record"
+      #     url: "https://example.com"
+      # - title: "High School"
+      #   school:
+      #     name: "Thomas Jefferson High School for Science and Technology."
+      #     url: "https://example.org"
+      #   GPA: "4.2 out of 5.0"
+      #   featuredLink:
+      #     enable: true
+      #     url: "https://example.com"CR_2024_Mechanical_
+  # achievements:
+  #   enable: true
+  #   # title: "Custom Name"
+  #   items:
+  #     - title: Google kickstart runner
+  #       content: I solved all problems with optimal solution.
+  #       url: https://example.com
+  #       image: /images/achievment.jpg
+  #     - title: Facebook Hackathon Winner
+  #       content: Developed a product using Artificial Intelligence.
+  #       image: /images/achievment.jpg
+  #     - title: Hugo Profile
+  #       content: Developed a theme and getting 1K+ downloads per month.
+  #       url: "https://github.com/gurusabarish/hugo-profile"
+  #       image: /images/achievment.jpg
+  #     - title: Microsoft Imagine Runner
+  #       content: We are developed a product which can help others.
+  #     - title: Google Summer of Code
+  #       content: Contributed to a open source project.
+  #       url: https://example.com
+
+  # projects
+  projects:
+    enable: true
+    # title: "Custom Name"
+    items:
+      - title: Precision Pin-hunting Meets Playfulness
+        content: The Franka arm autonomously shoots randomly placed pins based on user-specified colors.
+        image: /images/ME495_Nerf_gun1.gif
+        featured:
+          name: Read More
+          link: /posts/my-first-post/
+        badges:
+          - "ROS2"
+          - "Python"
+          - "Path Planning"
+          - "Computer Vision/YOLO"
+          - "AprilTag"
+          - "SolidWorks"
+        links:
+          - icon: fa fa-envelope
+            url: mailto:?subject=Check%20out%20this%20project!&body=Check%20it%20out:%20https%3a%2f%2fhugo-profile.netlify.app%2fblog%2fmarkdown-syntax%2f
+          - icon: fab fa-github
+            url: https://github.com/NuCapybara/robot_go_bowling
+
+      - title: Simulating the Dynamics from Scratch-Mechanical Modeling of a Jack Bouncing within the Box Boundaries.
+        content: The simulation from scratch involves with Python and control theories, including Euler-Lagrangian equations and impact laws.
+        image: /images/Simulation.gif
+        featured:
+          name: Read More
+          link: /posts/my-second-post/
+        badges:
+          - "Python"
+          - "Control"
+          - "Euler-Lagrangian Equation"
+          - "Impact Law"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/NuCapybara/BouncingJack/tree/main
+
+
+      - title: Drone Tagging - Release Mechanism Design
+        content: Designed a new release mechanism that will make the tag more robust to perturbations and external factors, resulting in an increase to the deployment success rate of the biologging tags.
+        image: /images/Drone_Tagging.gif
+        featured:
+          name: Read More
+          link: /posts/my-third-post/
+        badges:
+          - "Solidworks"
+          - "Fluid dynamics"
+          - "Engineering Analysis and validation"          
+          - "Design"
+
+      - title: Robot Nurse - Mouth Care for an Unconscious Resident
+        content: The robot nurse will detect patient's lip and hydrate it with a cotton swab.
+        image: /images/Robot_Jon.gif
+        featured:
+          name: Read More
+          link: /posts/my-fourth-post/
+        badges:
+          - "ROS2"
+          - "C++"
+          - "Python"
+          - "Computer Vision"
+          - "MoveIt"
+          - "Solidworks"
+
+      # - title: Hugo Profile V2
+      #   content: A clean and simple Hugo template for personal portfolio and blog.
+      #   image: /images/projects/profile2.jpg
+      #   featured:
+      #     name: Demo V2
+      #     link: https://hugo-profile-2.netlify.app
+      #   badges:
+      #     - "Hugo"
+      #     - "Bootstrap"
+      #     - "Javascript"
+      #   links:
+      #     - icon: fab fa-github
+      #       url: https://github.com/gurusabarish/HugoProfileV2
+
+  #Contact
+  contact:
+    enable: true
+    # title: "Custom Name"
+    content: If you have any questions or opportunities or just want to say hi, please feel free to contact me by Email jialuyu2024@u.northwestern.edu or Tel 734-968-9456.
+    email: jialuyu2024@u.northwestern.edu
+    btnName: Email Stella
+    # formspree:
+    #   enable: true # `contact.email` value will be ignored
+    #   formId: abcdefgh # Take it from your form's endpoint, like 'https://formspree.io/f/abcdefgh'
+    #   emailCaption: "Enter your email address"
+    #   messageCaption: "Enter your message here"
+
+  footer:
+    recentPosts:
+      path: "blogs"
+      count: 3
+      title: Recent Posts
+      enable: true
+      disableFeaturedImage: false
+    socialNetworks:
+      github: https://github.com/NuCapybara
+      linkedin: linkedin.com/in/jialu-yu
+
+
+  # List pages like blogs and posts
+  listPages:
+    disableFeaturedImage: false
+
+  # Single pages like blog and post
+  singlePages:
+    readTime:
+      enable: true
+      content: "min read"
+    scrollprogress:
+      enable: true
+
+  # For translations
+  terms:
+    read: "Read"
+    toc: "Table Of Contents"
+    copyright: "All rights reserved"
+    pageNotFound: "Page not found"
+    emailText: "Check out this site"
+
+  datesFormat:
+    article: "Jan 2, 2006"
+    articleList: "Jan 2, 2006"
+    articleRecent: "Jan 2, 2006"
+
+  #customScripts: -| # You can add custom scripts which will be added before </body> tag
+  #  <script type="text/javascript"><!-- any script here --></script>
