@@ -358,6 +358,9 @@ params:
           - "Computer Vision"
           - "MoveIt"
           - "Solidworks"
+        links:
+          - icon: fab fa-github
+            url: https://github.com/NuCapybara/Winter_Project
 
       # - title: Hugo Profile V2
       #   content: A clean and simple Hugo template for personal portfolio and blog.
