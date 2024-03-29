@@ -22,18 +22,18 @@ markup:
     renderer:
       unsafe: true
 
-Menus:
-  main:
-    - identifier: blog
-      name: Blog
-      title: Blog posts
-      url: /blogs
-      weight: 1
-    - identifier: gallery
-      name: Gallery
-      title: Blog posts
-      url: /gallery
-      weight: 2
+# Menus:
+#   main:
+#     - identifier: blog
+#       name: Blog
+#       title: Blog posts
+#       url: /blogs
+#       weight: 1
+#     - identifier: gallery
+#       name: Gallery
+#       title: Blog posts
+#       url: /gallery
+#       weight: 2
   # Dropdown menu:
   #   - identifier: dropdown
   #     title: Example dropdown menu
@@ -212,7 +212,7 @@ params:
         info:
           enable: false
         featuredLink:
-          enable: true
+          enable: false
           name: "View the project"
           url: "https://example.com"
         content: |
@@ -234,17 +234,22 @@ params:
           name: "Northwestern University"
           url: "https://example.org"
         date: "2023 - 2024"
-        GPA: "3.75 out of 4.0"
+        GPA: "3.6 out of 4.0"
         content: |-
           Course taken:
             - Robotics Manipulation 
             - Embeded systems in Robotics
             - Theory of Machines: Dynamics
             - Introduction to AI
+            - Deep Reinforcement Learning
+            - Active Learning in Robotics
+            - Sensing, Navigation, and Machine Learning for Robotics
+            - Soft Robotics
+            
       - title: "Bachelor of Science in Mechanical Engineering"
         school:
           name: "University of Michigan"
-          url: "https://example.org"
+          url: "https://umich.edu/"
         date: "2020-2023"
         GPA: "3.3 out of 4.0"
         content: |-
@@ -390,7 +395,7 @@ params:
       disableFeaturedImage: false
     socialNetworks:
       github: https://github.com/NuCapybara
-      linkedin: linkedin.com/in/jialu-yu
+      linkedin: https://linkedin.com/in/jialu-yu
 
 
   # List pages like blogs and posts
