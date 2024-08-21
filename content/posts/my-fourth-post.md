@@ -18,7 +18,7 @@ The image below shows the main nodes in the system and how they communicate to a
 
 ![targets](/images/winter_flow_chart.png)
 
-## Hareware
+## Hardware
 
 The system is composed of an interbotix WX-200 robot and an Intel RealSense D435i Depth camera. The connected black 3D parts are designed for precise calibration between camera and robot.
 
