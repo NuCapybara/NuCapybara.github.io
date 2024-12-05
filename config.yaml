@@ -362,6 +362,23 @@ params:
           - icon: fab fa-github
             url: https://github.com/NuCapybara/Winter_Project
 
+      - title: Real-Time Human Motion Prediction for Robotic Teleoperation Using mVAE
+        content: Using mVAE, this project predicts robot arm movements from human motion for real-time teleoperation, with applications in robotics, autonomous warehousing, and stroke rehabilitation.
+        image: /images/Robot_Jon.gif
+        featured:
+          name: Read More
+          link: /posts/my-fifth-post/
+        badges:
+          - "ROS2"
+          - "C++"
+          - "Python"
+          - "Machine Learning(mVAE)"
+          - Data Processing
+        links:
+          - icon: fab fa-github
+            url: /https://github.com/NuCapybara/final_project_mVAE_pipeline
+
+
       # - title: Hugo Profile V2
       #   content: A clean and simple Hugo template for personal portfolio and blog.
       #   image: /images/projects/profile2.jpg

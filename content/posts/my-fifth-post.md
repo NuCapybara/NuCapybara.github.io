@@ -40,3 +40,61 @@ For the robot trials, a Franka Emika robot performs the same task as the human s
 ## Cube Force Data Collection
 
 A cube equipped with force sensors on each side is used during both the human and robot trials to measure the force applied to the cube. This data will be used to map the force applied by the human's fingers onto the robot’s gripper strength, which is an important aspect for accurate teleoperation control.
+
+
+# Data Processing
+
+The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resulting in different data lengths within the same trial. To create a consistent dataset, it is necessary to align the EMG and IMU data with the robot joint velocity, position data, and the cube force sensor data.
+
+## Human Data Processing
+
+1. **Segmentation**:  
+   The EMG data is first segmented based on valid movements during the task, which includes the following phases:
+   - From the start position to grabbing the cube
+   - Moving the cube to the target position
+   - Dropping the cube at the target position
+
+   A clustering-based machine learning algorithm is applied to identify the boundaries of these movement phases. This results in four segments of EMG data for each trial: one for the upper Myo armband and one for the lower Myo armband.
+
+2. **Data Smoothing and Rectification**:  
+   Due to the noisy nature of the EMG data, a smoothing and rectification process is applied to improve its quality for machine learning. This helps ensure that the data is cleaner and more suitable for model training.
+
+3. **Downsampling**:  
+   Next, the EMG data is downsampled to match the time synchronization with the IMU data. Linear interpolation is used to ensure that both the EMG and IMU data segments are aligned in time.
+
+4. **Alignment**:  
+   After downsampling, the shortest data segment length among all EMG and IMU segments is identified. All other segments are downsampled to this length to ensure uniformity. At this point, each segment (EMG and IMU) will have the same length for each trial.
+
+5. **Data Combination**:  
+   The four segmented datasets (for both the upper and lower armbands) are then combined into four distinct datasets per trial:
+   - Upper Myo EMG combined data
+   - Upper Myo IMU combined data
+   - Lower Myo EMG combined data
+   - Lower Myo IMU combined data
+
+   Each dataset now has consistent data length, representing the human’s performance of the task across all four repetitions in a trial.
+
+## Robot Data Processing
+
+1. **Segmentation**:  
+   Similar to the human data, the robot data is segmented according to the desired task movements (grabbing, moving, and placing the cube).
+
+2. **Downsampling and Alignment**:  
+   The robot data is then downsampled to align with the human EMG and IMU data. A low-pass filter is applied to smooth the robot’s joint positions and velocities, ensuring that the data is consistent and suitable for training.
+
+3. **Repetition**:  
+   Since the robot performs the task once per trial (as the robot follows a fixed trajectory), it does not repeat the task like the human data. To align the robot data with the human data (which has been repeated four times), the robot’s data is duplicated four times to match the four repetitions of the human trial. This ensures that the robot’s trajectory is aligned with the four human data segments in each trial.
+
+## Data Processing Steps:
+
+### Human Data:
+- Segment and cluster EMG data based on task movements.
+- Apply smoothing and rectification to the EMG data.
+- Downsample and align EMG and IMU data.
+- Ensure uniform length across all data segments.
+- Combine the data for both upper and lower armbands.
+
+### Robot Data:
+- Segment robot task movements and apply a low-pass filter.
+- Downsample robot data to match human data.
+- Repeat robot data to align with the four human task repetitions.
