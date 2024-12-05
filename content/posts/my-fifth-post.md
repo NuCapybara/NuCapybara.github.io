@@ -19,11 +19,12 @@ The potential applications of this project are broad. It can be utilized in auto
 
 # Data Collection
 
+
 The data collection process is divided into two parts: **Human Arm Data Collection** and **Robot Data Collection**. Both the human and robot perform the same series of tasks to collect their respective data, specifically: picking up and placing a cube.
 
 ## Task Setup and Board Design
 
-The task is carried out on the board shown below, which includes one starting position (a square) and 27 target positions on the same plane. The target positions are arranged in a semi-circle, characterized by varying combinations of angles (0°, 22.5°, 45°, 67.5°, 90°, 112.5°, 135°, 157.5°, and 180°), distances (0.1m, 0.2m, 0.3m), and heights (0m and 0.78m). This setup creates a total of 54 distinct target positions (27 2D positions with two height variations). 
+The task is carried out on the board shown below, which includes one starting position (a square) and 27 target positions on the same plane. The target positions are arranged in a semi-circle, characterized by varying combinations of angles (0°, 22.5°, 45°, 67.5°, 90°, 112.5°, 135°, 157.5°, and 180°), distances (0.1m, 0.2m, 0.3m), and heights (0m and 0.078m). This setup creates a total of 54 distinct target positions (27 2D positions with 2 height variations). 
 
 At the start of each trial, the cube is placed at the square-shaped starting position, and both the human and robot begin from their respective home positions. The task is to grab the cube and place it at a target position.
 
@@ -43,6 +44,7 @@ A cube equipped with force sensors on each side is used during both the human an
 
 
 # Data Processing
+
 
 The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resulting in different data lengths within the same trial. To create a consistent dataset, it is necessary to align the EMG and IMU data with the robot joint velocity, position data, and the cube force sensor data.
 
@@ -98,3 +100,13 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 - Segment robot task movements and apply a low-pass filter.
 - Downsample robot data to match human data.
 - Repeat robot data to align with the four human task repetitions.
+
+
+# Data Augmentation
+- TODO
+
+# mVAE model training
+- TODO
+
+# Result
+- TODO

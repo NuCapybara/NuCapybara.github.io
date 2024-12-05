@@ -364,7 +364,7 @@ params:
 
       - title: Real-Time Human Motion Prediction for Robotic Teleoperation Using mVAE
         content: Using mVAE, this project predicts robot arm movements from human motion for real-time teleoperation, with applications in robotics, autonomous warehousing, and stroke rehabilitation.
-        image: /images/Robot_Jon.gif
+        image: /images/myo.jpg
         featured:
           name: Read More
           link: /posts/my-fifth-post/
