@@ -1,7 +1,7 @@
 +++
 title = 'Human-Robot Teleoperation via mVAE: Predicting Robot Motion from Human EMG and IMU Signals'
 date = 2024-12-04T05:18:56-06:00
-draft = false
+draft = true
 +++
 <div style="text-align:center;">Authors: Jialu Yu</div>
 
