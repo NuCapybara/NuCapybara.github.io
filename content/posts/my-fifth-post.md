@@ -10,13 +10,13 @@ draft = false
 <!-- {{< youtube >}}   -->
 
 
-# Motivation
+## Motivation
 
 Rehabilitation and automation are two fields where robotics can make a real difference in people’s lives. For stroke patients undergoing upper-body rehabilitation, traditional exercises can feel repetitive and dull, making it hard to stay motivated. By adding robotics into the mix, we can turn these exercises into dynamic and engaging activities that not only boost engagement but also improve muscle activation and recovery. Similarly, in warehouses, many tasks still rely heavily on manual labor. Human-controlled robotic systems offer an exciting way to combine human intuition with robotic precision, creating safer and more efficient workflows—even in challenging environments where signal loss or interference can occur.
 
 This project was inspired by the need to bridge the gap between human intent and robotic action. By using Myo armbands to capture human arm movements and muscle activity through IMU (Inertial Measurement Unit) and EMG (Electromyography) signals, I trained a Multimodal Variational Autoencoder (mVAE) to predict and control a Franka Emika robotic arm. What makes the mVAE special is its ability to handle missing or incomplete data, ensuring the system remains reliable even in less-than-ideal conditions. This versatility makes it a promising solution for both rehabilitation and automation, where adaptability and precision are key.
 
-# Mission
+## Mission
 
 The objective of this project is to develop and deploy a robust machine learning framework that **translates human arm movements** into **precise robotic control**. Specifically, this includes:
 
@@ -34,12 +34,12 @@ The objective of this project is to develop and deploy a robust machine learning
 By achieving these objectives, the project demonstrates the feasibility of human-driven robotic control and its potential impact in diverse fields.
 
 
-# Data Collection
+## Data Collection
 
 
 The data collection process is divided into two parts: **Human Arm Data Collection** and **Robot Data Collection**. Both the human and robot perform the same series of tasks to collect their respective data, specifically: picking up and placing a cube.
 
-## Task Setup and Board Design
+### Task Setup and Board Design
 
 
 ![targets](/images/plate_itself.jpg )
@@ -47,29 +47,29 @@ The task is carried out on the board shown above, which includes one starting po
 
 At the start of each trial, the cube is placed at the square-shaped starting position, and both the human and robot begin from their respective home positions. The task is to grab the cube and place it at a target position.
 
-## Myo Armband for Human Data Collection
+### Myo Armband for Human Data Collection
 
 <!-- ![targets](/images/Cube_with_force_sensor.png) -->
 <div style="text-align: center;">
-   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="400"/>
+   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="500"/>
 </div>
 During the human trials, two Myo armbands are used: one worn on the upper arm and the other on the lower arm, as illustrated below. These armbands are connected via serial Bluetooth, allowing for seamless collection of both IMU (Inertial Measurement Unit) and EMG (Electromyography) data through the ROS2 system.
 
 Each trial involves collecting data across the entire task cycle: starting from the initial position, grabbing the cube, moving to the target position, and finally placing the cube at the designated location. To monitor the gripping force, each side of the cube is equipped with a force sensor, which records force data during the task. To ensure robustness and reliability in the machine learning model, the entire task is repeated four times in each trial.
 
-## Cube Force Data Collection
+### Cube Force Data Collection
 
 A cube equipped with force sensors on each side is used during both the human and robot trials to measure the force applied to the cube. This data will be used to map the force applied by the human's fingers onto the robot’s gripper strength, which is an important aspect for accurate teleoperation control. 
 
-## Robot Data Collection
+### Robot Data Collection
 
 For the robot trials, a Franka Emika robot performs the same task as the human subject. Starting from the same home position, the robot grabs the cube, moves to the target position, and places the cube there. Data collection is managed using ROS2 and **rosbag** to record the robot’s joint trajectories. The robot's joint positions and velocities are captured at each timestamp during the trial.
 
-# Data Processing
+## Data Processing
 
 The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resulting in different data lengths within the same trial. To create a consistent dataset, it is necessary to align the EMG and IMU data with the robot joint velocity, position data, and the cube force sensor data.
 
-## Human Data Processing
+### Human Data Processing
 
 1. **Segmentation**:  
 
@@ -80,7 +80,7 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 
    A clustering-based machine learning algorithm is employed to identify the boundaries of the movement phases, dividing the task into distinct segments. This process results in four segments of EMG and IMU data for each trial: one set from the upper Myo armband and another from the lower Myo armband. These segments are then combined to create a comprehensive dataset that captures both muscle activity and movement dynamics, as shown below.
    <div style="text-align: center;">
-      <img src="/images/Combine_emg_imu_unprocessed.svg" alt="targets" width="400"/>
+      <img src="/images/Combine_emg_imu_unprocessed.svg" alt="targets" width="800"/>
    </div>
 
 2. **Data Smoothing and Rectification**:  
@@ -101,7 +101,7 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 
    Each dataset now has consistent data length, representing the human’s performance of the task across all four repetitions in a trial.
 
-## Robot Data Processing
+### Robot Data Processing
 
 1. **Segmentation**:  
    Similar to the human data, the robot data is segmented according to the desired task movements (grabbing, moving, and placing the cube).
@@ -127,11 +127,71 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 - Repeat robot data to align with the four human task repetitions.
 
 
-# Data Augmentation
-- TODO
+### Data Augmentation Process
 
-# mVAE model training
-- TODO
+1. **Normalization:**
+   - The original data is normalized to the range of [-1, 1] using `sklearn.preprocessing.MinMaxScaler`. This ensures consistent scaling across all features.
+
+2. **Time-Step Concatenation:**
+   - For each data point at the current time step \( t \), the data is horizontally concatenated with the corresponding data from the previous time step \( t-1 \). This captures temporal dependencies in the dataset.
+
+3. **Dataset Splitting:**
+   - The normalized dataset is split into a training set and a testing set using an 80:20 ratio to ensure an appropriate balance between training and evaluation.
+
+4. **Data Masking for Augmentation:**
+   - Two masked datasets are created:
+     - **Case 2 Dataset:** All robot data in the training set is masked with the value -2.
+     - **Case 3 Dataset:** All original data at time step \( t \) in the training set is masked with the value -2.
+
+5. **Final Augmented Training Set:**
+   - The original training data is vertically concatenated with the Case 2 and Case 3 datasets, resulting in the final augmented training set. This augmentation ensures the model is robust to incomplete or missing data during training.
+
+## Multimodal Variational Autoencoder (mVAE) training and results
+
+A variational autoencoder (VAE) is a latent variable generative model. It consists of:
+- **An Encoder:** Maps the input data \( x \) into a latent representation \( z \), such that \( z = \text{encoder}(x) \).
+- **A Decoder:** Reconstructs the input from the latent code, such that \( x = \text{decoder}(z) \).
+
+The **information bottleneck** introduced by mapping the input into a lower-dimensional latent space results in a loss of information. This is measured by the **evidence lower bound (ELBO):**
+
+\[
+\text{ELBO} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - \lambda \cdot KL[q(z|x) || p(z)],
+\]
+
+where:
+- \( KL[p, q] \) is the Kullback–Leibler divergence between distributions \( p \) and \( q \),
+- \( \lambda \) and \( \beta \) are parameters that balance the terms in the ELBO.
+
+The ELBO is optimized via stochastic gradient descent, using the **reparameterization trick** to estimate the gradient. Since the primary focus of this study is the **reconstruction capability** of the model, we chose \( \beta = 0 \), focusing solely on the reconstruction loss. This approach led to noticeable improvements in reconstruction performance.
+
+---
+
+This project extends the standard VAE to multimodal data, forming a **Multimodal Variational Autoencoder (mVAE)**. The mVAE architecture includes:
+- **Six Encoders and Decoders:** Each corresponding to a specific sensory modality. 
+  - Each encoder and decoder operates as an independent neural network and does not share weights with other modalities' networks.
+- **A Shared Latent Representation:** All encoders map their respective inputs (one sensory modality) into a shared latent code \( z \).
+
+The network architecture is depicted below:
+
+| Layer                                  | RL_IMU      | RL_EMG      | RU_IMU                  | RU_EMG      | Robot_Joint_Pos | Joint_Vel    |
+| :------------------------------------: | :---------: | :---------: | :---------------------: | :---------: | :-------------: | :----------: |
+| **Input Layer**                        | **20 dims** | **16 dims** | **20 dims**             | **16 dims** | **18 dims**     | **18 dims**  |
+| **Modality Encoders Layer 1**          | **100-ReLU**| **80-ReLU** | **100-ReLU**            | **80-ReLU** | **90-ReLU**     | **90-ReLU**  |
+| **Modality Encoders Layer 2**          | **50-ReLU** | **40-ReLU** | **50-ReLU**             | **40-ReLU** | **45-ReLU**     | **45-ReLU**  |
+| **Concatenation to 270 Dimensions**    |             |             | **270 Dimensions**      |             |                 |              |
+| **Shared Encoder**                     |             |             | **350-ReLU**            |             |                 |              |
+| **Latent Space**                       |             |             | **100-ReLU×2**          |             |                 |              |
+| **Shared Decoder Layer 1**             |             |             | **350-ReLU**            |             |                 |              |
+| **Shared Decoder Layer 2**             |             |             | **270-ReLU**            |             |                 |              |
+| **Slicing**                            |             |             | **(50, 40, 50, 40, 45, 45)** |          |                 |              |
+| **Modality Decoders**                  | **100-ReLU**| **80-ReLU** | **100-ReLU**            | **80-ReLU** | **90-ReLU**     | **90-ReLU**  |
+| **Reconstructed Data**                 | **20-ReLU** | **16-ReLU** | **20-ReLU**             | **16-ReLU** | **18-ReLU**     | **18-ReLU**  |
+
+
 
 # Result
-- TODO
+
+   <div style="text-align: center;">
+      <img src="/images/pred_act_80000p2.png" alt="targets" width="1000"/>
+   </div>
+
