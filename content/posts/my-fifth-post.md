@@ -46,7 +46,7 @@ At the start of each trial, the cube is placed at the square-shaped starting pos
 
 ## Myo Armband for Human Data Collection
 
-![targets](/images/Cube with force sensor.png)
+![targets](/images/Cube_with_force_sensor.png)
 During the human trials, two Myo armbands are used: one worn on the upper arm and the other on the lower arm, as illustrated below. These armbands are connected via serial Bluetooth, allowing for seamless collection of both IMU (Inertial Measurement Unit) and EMG (Electromyography) data through the ROS2 system.
 
 Each trial involves collecting data across the entire task cycle: starting from the initial position, grabbing the cube, moving to the target position, and finally placing the cube at the designated location. To monitor the gripping force, each side of the cube is equipped with a force sensor, which records force data during the task. To ensure robustness and reliability in the machine learning model, the entire task is repeated four times in each trial.
@@ -66,13 +66,15 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 ## Human Data Processing
 
 1. **Segmentation**:  
-![targets](/images/Combine_emg_imu_unprocessed.svg)
+
    The EMG data is first segmented based on valid movements during the task, which includes the following phases:
    - From the start position to grabbing the cube
    - Moving the cube to the target position
    - Dropping the cube at the target position
 
-   A clustering-based machine learning algorithm is applied to identify the boundaries of these movement phases. This results in four segments of EMG/IMU data for each trial: one for the upper Myo armband and one for the lower Myo armband. Then four segments of EMG and IMU data will be combined, with a result below.
+   A clustering-based machine learning algorithm is employed to identify the boundaries of the movement phases, dividing the task into distinct segments. This process results in four segments of EMG and IMU data for each trial: one set from the upper Myo armband and another from the lower Myo armband. These segments are then combined to create a comprehensive dataset that captures both muscle activity and movement dynamics, as shown below.
+
+   ![targets](/images/Combine_emg_imu_unprocessed.svg)
 
 2. **Data Smoothing and Rectification**:  
    Due to the noisy nature of the EMG data, a smoothing and rectification process is applied to improve its quality for machine learning. This helps ensure that the data is cleaner and more suitable for model training.
