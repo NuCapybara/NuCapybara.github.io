@@ -14,6 +14,7 @@ draft = false
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js">
 </script>
 
+
 ## Motivation
 
 Rehabilitation and automation are two fields where robotics can make a real difference in people’s lives. For stroke patients undergoing upper-body rehabilitation, traditional exercises can feel repetitive and dull, making it hard to stay motivated. By adding robotics into the mix, we can turn these exercises into dynamic and engaging activities that not only boost engagement but also improve muscle activation and recovery. Similarly, in warehouses, many tasks still rely heavily on manual labor. Human-controlled robotic systems offer an exciting way to combine human intuition with robotic precision, creating safer and more efficient workflows—even in challenging environments where signal loss or interference can occur.
@@ -45,8 +46,9 @@ The data collection process is divided into two parts: **Human Arm Data Collecti
 
 ### Task Setup and Board Design
 
-
-![targets](/images/plate_itself.jpg )
+<div style="text-align: center;">
+   <img src="/images/plate_itself.jpg" alt="targets" width="400"/>
+</div>
 The task is carried out on the board shown above, which includes one starting position (a square) and 27 target positions on the same plane. The target positions are arranged in a semi-circle, characterized by varying combinations of angles (0°, 22.5°, 45°, 67.5°, 90°, 112.5°, 135°, 157.5°, and 180°), distances (0.1m, 0.2m, 0.3m), and heights (0m and 0.078m). This setup creates a total of 54 distinct target positions (27 2D positions with 2 height variations), which leads to 54 raw datasets among all human, robot and cube data. 
 
 At the start of each trial, the cube is placed at the square-shaped starting position, and both the human and robot begin from their respective home positions. The task is to grab the cube and place it at a target position.
@@ -55,7 +57,7 @@ At the start of each trial, the cube is placed at the square-shaped starting pos
 
 <!-- ![targets](/images/Cube_with_force_sensor.png) -->
 <div style="text-align: center;">
-   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="500"/>
+   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="400"/>
 </div>
 During the human trials, two Myo armbands are used: one worn on the upper arm and the other on the lower arm, as illustrated below. These armbands are connected via serial Bluetooth, allowing for seamless collection of both IMU (Inertial Measurement Unit) and EMG (Electromyography) data through the ROS2 system.
 
@@ -84,7 +86,7 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 
    A clustering-based machine learning algorithm is employed to identify the boundaries of the movement phases, dividing the task into distinct segments. This process results in four segments of EMG and IMU data for each trial: one set from the upper Myo armband and another from the lower Myo armband. These segments are then combined to create a comprehensive dataset that captures both muscle activity and movement dynamics, as shown below.
    <div style="text-align: center;">
-      <img src="/images/Combine_emg_imu_unprocessed.svg" alt="targets" width="800"/>
+      <img src="/images/Combine_emg_imu_unprocessed.svg" alt="targets" width="600"/>
    </div>
 
 2. **Data Smoothing and Rectification**:  
