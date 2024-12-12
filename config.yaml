@@ -376,7 +376,7 @@ params:
           - Data Processing
         links:
           - icon: fab fa-github
-            url: https://github.com/NuCapybara/final_project_mVAE_pipeline
+            url: https://github.com/NuCapybara/mVAE_robot_human_training
 
 
       # - title: Hugo Profile V2
