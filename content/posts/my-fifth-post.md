@@ -153,28 +153,30 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 
 ### Variational Autoencoder (VAE)
 
-A Variational Autoencoder (VAE) is a latent variable generative model that consists of two key components:
+### Variational Autoencoder (VAE)
 
-- **An Encoder:** Maps the input data \( x \) into a latent representation \( z \), such that:
-  \[
+A Variational Autoencoder (VAE) is a type of latent variable generative model, consisting of two primary components:
+
+- **An Encoder:** Transforms the input data \( x \) into a lower-dimensional latent representation \( z \), as follows:
+  $$
   z = \text{encoder}(x)
-  \]
-- **A Decoder:** Reconstructs the input from the latent representation, such that:
-  \[
+  $$
+- **A Decoder:** Reconstructs the input data from the latent representation \( z \), such that:
+  $$
   x = \text{decoder}(z)
-  \]
+  $$
 
-The **information bottleneck** introduced by mapping the input into a lower-dimensional latent space inevitably results in some loss of information. This loss is quantified using the **evidence lower bound (ELBO):**
+The **information bottleneck** created by compressing the input into a lower-dimensional latent space results in some information loss. This loss is captured by the **evidence lower bound (ELBO):**
 
 $$
 \text{ELBO} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - \lambda \cdot KL[q(z|x) || p(z)]
 $$
 
 where:
-- \( KL[q, p] \) is the Kullback–Leibler (KL) divergence between the approximate posterior \( q(z|x) \) and the prior \( p(z) \),
-- \( \lambda \) and \( \beta \) are parameters that control the trade-off between reconstruction accuracy and latent space regularization.
+- KL[q, p] represents the Kullback–Leibler (KL) divergence between the approximate posterior q(z|x) and the prior p(z).
+- λ and β are parameters used to balance reconstruction accuracy and latent space regularization.
 
-The ELBO is optimized via stochastic gradient descent, using the **reparameterization trick** to estimate the gradient. Since the primary focus of this study is the **reconstruction capability** of the model, we chose \( \beta = 0 \), focusing solely on the reconstruction loss. This approach led to noticeable improvements in reconstruction performance.
+The ELBO is optimized during training using stochastic gradient descent, with the **reparameterization trick** applied to estimate gradients efficiently. For this study, the focus was placed on the model's **reconstruction capability**, so β was set to zero. By concentrating solely on the reconstruction loss, significant improvements in reconstruction performance were achieved.
 
 ---
 
