@@ -47,7 +47,7 @@ The data collection process is divided into two parts: **Human Arm Data Collecti
 ### Task Setup and Board Design
 
 <div style="text-align: center;">
-   <img src="/images/plate_itself.jpg" alt="targets" width="600"/>
+   <img src="/images/plate_itself.jpg" alt="targets" width="500"/>
 </div>
 The task is carried out on the board shown above, which includes one starting position (a square) and 27 target positions on the same plane. The target positions are arranged in a semi-circle, characterized by varying combinations of angles (0°, 22.5°, 45°, 67.5°, 90°, 112.5°, 135°, 157.5°, and 180°), distances (0.1m, 0.2m, 0.3m), and heights (0m and 0.078m). This setup creates a total of 54 distinct target positions (27 2D positions with 2 height variations), which leads to 54 raw datasets among all human, robot and cube data. 
 
@@ -306,3 +306,7 @@ The ultimate objective of this project is to predict future robot motion by moni
 
 Overall, these tests provide a comprehensive evaluation of the model’s prediction capabilities and outline areas for potential future enhancements.
 
+## Related GitHub Repositories
+
+- [ROS2_Myo_Franka](https://github.com/YourUsername/ROS2_Myo_Franka): A repository for connecting Myo armbands to the Franka Emika robot, including data collection and integrating machine learning pipelines into robot control.
+- [mVAE_robot_human_training](https://github.com/NuCapybara/mVAE_robot_human_training): A repository for training the processed robot and human data.
