@@ -47,7 +47,7 @@ The data collection process is divided into two parts: **Human Arm Data Collecti
 ### Task Setup and Board Design
 
 <div style="text-align: center;">
-   <img src="/images/plate_itself.jpg" alt="targets" width="400"/>
+   <img src="/images/plate_itself.jpg" alt="targets" width="600"/>
 </div>
 The task is carried out on the board shown above, which includes one starting position (a square) and 27 target positions on the same plane. The target positions are arranged in a semi-circle, characterized by varying combinations of angles (0°, 22.5°, 45°, 67.5°, 90°, 112.5°, 135°, 157.5°, and 180°), distances (0.1m, 0.2m, 0.3m), and heights (0m and 0.078m). This setup creates a total of 54 distinct target positions (27 2D positions with 2 height variations), which leads to 54 raw datasets among all human, robot and cube data. 
 
@@ -57,7 +57,7 @@ At the start of each trial, the cube is placed at the square-shaped starting pos
 
 <!-- ![targets](/images/Cube_with_force_sensor.png) -->
 <div style="text-align: center;">
-   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="400"/>
+   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="500"/>
 </div>
 During the human trials, two Myo armbands are used: one worn on the upper arm and the other on the lower arm, as illustrated below. These armbands are connected via serial Bluetooth, allowing for seamless collection of both IMU (Inertial Measurement Unit) and EMG (Electromyography) data through the ROS2 system.
 
