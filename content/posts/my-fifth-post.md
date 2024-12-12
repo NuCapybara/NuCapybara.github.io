@@ -148,19 +148,28 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 
 ## Multimodal Variational Autoencoder (mVAE) training and results
 
-A variational autoencoder (VAE) is a latent variable generative model. It consists of:
-- **An Encoder:** Maps the input data \( x \) into a latent representation \( z \), such that \( z = \text{encoder}(x) \).
-- **A Decoder:** Reconstructs the input from the latent code, such that \( x = \text{decoder}(z) \).
+### Variational Autoencoder (VAE)
 
-The **information bottleneck** introduced by mapping the input into a lower-dimensional latent space results in a loss of information. This is measured by the **evidence lower bound (ELBO):**
+A Variational Autoencoder (VAE) is a latent variable generative model that consists of two key components:
 
-\[
-\text{ELBO} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - \lambda \cdot KL[q(z|x) || p(z)],
-\]
+- **An Encoder:** Maps the input data \( x \) into a latent representation \( z \), such that:
+  \[
+  z = \text{encoder}(x)
+  \]
+- **A Decoder:** Reconstructs the input from the latent representation, such that:
+  \[
+  x = \text{decoder}(z)
+  \]
+
+The **information bottleneck** introduced by mapping the input into a lower-dimensional latent space inevitably results in some loss of information. This loss is quantified using the **evidence lower bound (ELBO):**
+
+$$
+\text{ELBO} = \mathbb{E}_{q(z|x)}[\log p(x|z)] - \lambda \cdot KL[q(z|x) || p(z)]
+$$
 
 where:
-- \( KL[p, q] \) is the Kullback–Leibler divergence between distributions \( p \) and \( q \),
-- \( \lambda \) and \( \beta \) are parameters that balance the terms in the ELBO.
+- \( KL[q, p] \) is the Kullback–Leibler (KL) divergence between the approximate posterior \( q(z|x) \) and the prior \( p(z) \),
+- \( \lambda \) and \( \beta \) are parameters that control the trade-off between reconstruction accuracy and latent space regularization.
 
 The ELBO is optimized via stochastic gradient descent, using the **reparameterization trick** to estimate the gradient. Since the primary focus of this study is the **reconstruction capability** of the model, we chose \( \beta = 0 \), focusing solely on the reconstruction loss. This approach led to noticeable improvements in reconstruction performance.
 
@@ -187,11 +196,96 @@ The network architecture is depicted below:
 | **Modality Decoders**                  | **100-ReLU**| **80-ReLU** | **100-ReLU**            | **80-ReLU** | **90-ReLU**     | **90-ReLU**  |
 | **Reconstructed Data**                 | **20-ReLU** | **16-ReLU** | **20-ReLU**             | **16-ReLU** | **18-ReLU**     | **18-ReLU**  |
 
+### Training parameters:
+
+- **learning rate:** 0.0005
+- **batch size:** 1440
+- **optimizer:** Adam
+- **training epochs:** 80000
+
+<!-- ### Loss Components Analysis
+
+The total loss consists of two main components:
+
+1. **Reconstruction Loss:** 
+   - Measures the negative log probability of the input under the reconstructed distribution. It represents the "nats" required to reconstruct the input from the latent space.
+
+2. **Latent Loss:** 
+   - Defined as the Kullback-Leibler (KL) divergence between the latent space distribution and a prior. It regularizes the latent space and reflects the "nats" required to transmit the latent distribution given the prior.
+
+---
+
+#### Observations
+
+- **Reconstruction Loss:**
+  - Dropped from **15 to -5** within the first **10,000 epochs**, indicating rapid improvement.
+  - Reached **negative values** after **10,000 epochs**, fluctuating between **-5 and 5** due to stochastic batch sampling.
+
+- **Latent Loss:**
+  - Stabilized at **30000**, much larger than the reconstruction loss but scaled down by a coefficient "alpha," which approaches zero during training.
+
+---
+
+### Insights
+
+- **Reconstruction Loss Fluctuation:** Likely caused by stochastic sampling; consider tuning batch size or using gradient clipping.
+- **Latent Loss Scaling:** "Alpha" effectively balances reconstruction and regularization, ensuring a structured latent space.
+- **Negative Reconstruction Loss:** Indicates potential overfitting; apply dropout or increase dataset size for better generalization. -->
+
+### Result
+
+- **Performance Testing (Metric: MSE)**
+
+1. **Test 1:** Predict (reconstruct) robot data from complete original data.
+2. **Test 2:** Predict (reconstruct) robot data from human data only.
+3. **Test 3:** Predict (reconstruct) all data at \( t \) from all data at \( t - 1 \) only.
+4. **Test 4:** Predict (reconstruct) future robot data (at \( t + 1 \)) from human data only.
+
+---
+
+### Additional Tests
+
+- **Test 5:** Feed the human data only to predict (reconstruct) the complete data.
+- **Test 6:** Feed the data at \( t \) only from the previously reconstructed data, then predict the future robot data (at \( t + 1 \)).
+
+---
+
+### Results and Plots
+
+The results for each test and the plots for **Test 4** (comparing the original position/velocity at \( t \) with the predicted position/velocity at \( t + 1 \)) are shown below:
 
 
-# Result
+| Test       | Joint_pos_cur (at t) | Joint_vel_cur (at t) |
+| :--------- | :------------------: | :------------------: |
+| **Test 1** |        0.0047        |        0.0091        |
+| **Test 2** |        0.0414        |        0.0384        |
+| **Test 3** |        0.00502       |        0.011         |
+| **Test 4** |        0.0502        |        0.0481        |
 
-   <div style="text-align: center;">
-      <img src="/images/pred_act_80000p2.png" alt="targets" width="1000"/>
-   </div>
+<div style="text-align: center;">
+   <img src="/images/pred_act_80000p2.png" alt="targets" width="1000"/>
+</div>
+
+### Discussion
+
+The ultimate objective of this project is to predict future robot motion by monitoring current human motion, as depicted in **Test 4**. However, conducting the previous three tests provides valuable insights into the performance of individual components.
+
+- **Test 1 and Test 2:** 
+  - Test 1 demonstrates that the prediction error for robot data is minimal when using complete data as input.
+  - Test 2 shows that while the error increases when only human data is used as input, the model still achieves excellent performance for position prediction.
+
+- **Test 3:** 
+  - Predicting data at time \( t \) (both human and robot data) from data at time \( t - 1 \) yields performance comparable to Test 1. 
+  - This consistency suggests that a one-time-step shift at 10 Hz does not significantly alter the state. Future work could explore incorporating larger time shifts to better evaluate prediction performance across more dynamic scenarios.
+
+- **Test 4:**
+  - This test combines the functions of Test 2 and Test 3, involving two stages of reconstruction:
+    1. **Initial Stage:** Human data is used to reconstruct the data at time \( t \).
+    2. **Secondary Stage:** The reconstructed data at time \( t \) is fed as input for predicting data at time \( t - 1 \), ultimately enabling prediction of data at \( t + 1 \).
+  - From the plots, it is evident that:
+    - **Position Predictions:** Closely align with the ground truth positions.
+    - **Velocity Predictions:** Match the general trend of ground truth values, although some extreme points in joints 1, 2, and 4 were missed by the model.
+    - These missed points correspond to boundary values (\(-1\) or \(1\)) in the dataset, highlighting a potential area for improvement in the model's handling of edge cases.
+
+Overall, these tests provide a comprehensive evaluation of the model’s prediction capabilities and outline areas for potential future enhancements.
 
