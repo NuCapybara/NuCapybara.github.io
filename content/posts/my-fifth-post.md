@@ -237,7 +237,7 @@ The total loss consists of two main components:
 - **Latent Loss Scaling:** "Alpha" effectively balances reconstruction and regularization, ensuring a structured latent space.
 - **Negative Reconstruction Loss:** Indicates potential overfitting; apply dropout or increase dataset size for better generalization. -->
 
-### Result
+### Training testsing
 
 - **Performance Testing (Metric: MSE)**
 
