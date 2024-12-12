@@ -103,7 +103,12 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
    - Lower Myo EMG combined data
    - Lower Myo IMU combined data
 
-   Each dataset now has consistent data length, representing the human’s performance of the task across all four repetitions in a trial.
+   Each dataset now has consistent data length, representing the human’s performance of the task across all four repetitions in a trial. 
+
+   A set of one trial's (4 repetitions) EMG and IMU data is shown below.
+   <div style="text-align: center;">
+      <img src="/images/smoothed_imu_emg.svg" alt="targets" width="800"/>
+   </div>
 
 ### Robot Data Processing
 
@@ -116,6 +121,10 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
 3. **Repetition**:  
    Since the robot performs the task once per trial (as the robot follows a fixed trajectory), it does not repeat the task like the human data. To align the robot data with the human data (which has been repeated four times), the robot’s data is duplicated four times to match the four repetitions of the human trial. This ensures that the robot’s trajectory is aligned with the four human data segments in each trial.
 
+  A set of one trial's (4 repetitions) data and a comparison with one repetition of robot data are shown below.
+   <div style="text-align: center;">
+      <img src="/images/Robot_data.png" alt="targets" width="800"/>
+   </div>
 ## Data Processing Steps:
 
 ### Human Data:
