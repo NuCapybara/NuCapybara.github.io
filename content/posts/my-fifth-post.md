@@ -20,6 +20,7 @@ This project was inspired by the need to bridge the gap between human intent and
 
 The objective of this project is to develop and deploy a robust machine learning framework that **translates human arm movements** into **precise robotic control**. Specifically, this includes:
 
+
 - **Data Collection and Synchronization** Capturing synchronized IMU and EMG signals from the Myo armbands, cube force sensor data, along with the robotic arm’s joint data, ensuring high-quality, multimodal input for training the model.
 
 - **Data process** The data is processed through various filters and downsampling to ensure IMU, EMG, and robot joint data are corresponding with each other when feeding into the model. 
@@ -27,6 +28,8 @@ The objective of this project is to develop and deploy a robust machine learning
 - **Model Training and Adaptation** Designing and training a Multimodal Variational Autoencoder (mVAE) to predict and reconstruct robotic joint positions and velocities based on human input. The model’s robustness is enhanced through data augmentation techniques such as *time-step concatenation* and *input masking*, allowing it to perform reliably even with partial or noisy data.
 
 - **Real-Time Deployment** Implementing the trained mVAE model to control a Franka Emika robotic arm in both simulated and real-world environments, achieving responsive and accurate robotic movements based on human intent.
+
+
 
 By achieving these objectives, the project demonstrates the feasibility of human-driven robotic control and its potential impact in diverse fields.
 
@@ -47,8 +50,9 @@ At the start of each trial, the cube is placed at the square-shaped starting pos
 ## Myo Armband for Human Data Collection
 
 <!-- ![targets](/images/Cube_with_force_sensor.png) -->
-<img src="/images/Cube_with_force_sensor.png" alt="targets" width="400"/>
-
+<div style="text-align: center;">
+   <img src="/images/Cube_with_force_sensor.png" alt="targets" width="400"/>
+</div>
 During the human trials, two Myo armbands are used: one worn on the upper arm and the other on the lower arm, as illustrated below. These armbands are connected via serial Bluetooth, allowing for seamless collection of both IMU (Inertial Measurement Unit) and EMG (Electromyography) data through the ROS2 system.
 
 Each trial involves collecting data across the entire task cycle: starting from the initial position, grabbing the cube, moving to the target position, and finally placing the cube at the designated location. To monitor the gripping force, each side of the cube is equipped with a force sensor, which records force data during the task. To ensure robustness and reliability in the machine learning model, the entire task is repeated four times in each trial.
@@ -75,9 +79,9 @@ The EMG data is sampled at 200 Hz, while the IMU data is sampled at 50 Hz, resul
    - Dropping the cube at the target position
 
    A clustering-based machine learning algorithm is employed to identify the boundaries of the movement phases, dividing the task into distinct segments. This process results in four segments of EMG and IMU data for each trial: one set from the upper Myo armband and another from the lower Myo armband. These segments are then combined to create a comprehensive dataset that captures both muscle activity and movement dynamics, as shown below.
-
-   <img src="/images/Combine_emg_imu_unprocessed.svg" alt="targets" width="400"/>
-
+   <div style="text-align: center;">
+      <img src="/images/Combine_emg_imu_unprocessed.svg" alt="targets" width="400"/>
+   </div>
 
 2. **Data Smoothing and Rectification**:  
    Due to the noisy nature of the EMG data, a smoothing and rectification process is applied to improve its quality for machine learning. This helps ensure that the data is cleaner and more suitable for model training.
