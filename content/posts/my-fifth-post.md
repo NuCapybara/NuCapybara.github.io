@@ -308,5 +308,5 @@ Overall, these tests provide a comprehensive evaluation of the model’s predict
 
 ## Related GitHub Repositories
 
-- [ROS2_Myo_Franka](https://github.com/YourUsername/ROS2_Myo_Franka): A repository for connecting Myo armbands to the Franka Emika robot, including data collection and integrating machine learning pipelines into robot control.
+- [ROS2_Myo_Franka](https://github.com/NuCapybara/ROS2_Myo_Franka): A repository for connecting Myo armbands to the Franka Emika robot, including data collection and integrating machine learning pipelines into robot control.
 - [mVAE_robot_human_training](https://github.com/NuCapybara/mVAE_robot_human_training): A repository for training the processed robot and human data.
